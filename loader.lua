@@ -1,7 +1,10 @@
-local Games = loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/GameList.lua"))()
+local success, response = pcall(function()
+    return game:HttpGet("https://raw.githubusercontent.com/contasecundara5-design/SPEED-HUB-X/refs/heads/main/main.lua")
+end)
 
-local URL = Games[game.GameId]
-
-if URL then
-  loadstring(game:HttpGet(URL))()
+if success and response then
+    local loadFunction = loadstring(response)
+    if loadFunction then
+        loadFunction()
+    end
 end
